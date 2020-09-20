@@ -1,8 +1,8 @@
-   - name: Copy source code
-     copy:
-       src: "../Django"
-       dest: "/opt/"
-       force: yes
+  - name: Copy source code
+    copy:
+      src: "../Django"
+      dest: "/opt/"
+      force: yes
     
   - name: Install Python Django dependencies
     pip:
