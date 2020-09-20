@@ -1,0 +1,5 @@
+---
+# vars file for webapp_db
+app_dir:  /opt/
+app_path: /opt/Django/notejam/
+local_app_path: ../Django

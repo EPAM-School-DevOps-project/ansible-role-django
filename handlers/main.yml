@@ -1,0 +1,6 @@
+---
+    - name: Restart notejam service
+      listen: "Notejam service started & enabled"
+      service:
+        name: notejam.service
+        state: restarted
