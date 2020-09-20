@@ -23,7 +23,7 @@
 
   - name: Copy systemd service file to server
     copy:
-      src: ../templates/notejam.service
+      src: ./templates/notejam.service
       dest: /etc/systemd/system
       owner: root
       group: root
