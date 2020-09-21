@@ -1,6 +1,6 @@
   - name: Copy source code
     copy:
-      src: "../Django"
+      src: "../django"
       dest: "/opt/"
       force: yes
     
