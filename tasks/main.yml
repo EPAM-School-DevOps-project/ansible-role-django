@@ -1,7 +1,7 @@
   - name: Copy source code
     copy:
-      src: "../django"
-      dest: "/opt/"
+      src: "{{ local_app_path }}"
+      dest: "{{ remote_app_path }}"
       force: yes
     
   - name: Install Python Django dependencies

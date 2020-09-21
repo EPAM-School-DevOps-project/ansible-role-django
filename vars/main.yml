@@ -1,5 +1,5 @@
 ---
 # vars file for webapp_db
-app_dir:  /opt/
-app_path: /opt/Django/notejam/
-local_app_path: ../Django
+remote_app_path:  /opt/
+app_path: /opt/django/notejam/
+local_app_path: /home/hrach-hambaryan/epam-devops-project/django
