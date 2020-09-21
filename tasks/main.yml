@@ -1,5 +1,5 @@
-  - name: Copy source code
-    copy:
+  - name: Synchronize source code
+    synchronize:
       src: "{{ local_app_path }}"
       dest: "{{ remote_app_path }}"
       force: yes
