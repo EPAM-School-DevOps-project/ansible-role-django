@@ -6,7 +6,7 @@
     
   - name: Install Python Django dependencies
     pip:
-      requirements: /opt/Django/requirements.txt
+      requirements: /opt/django/requirements.txt
 
   - name: Changing perm of "manage.py", adding "+x"
     file: dest={{ app_path }}manage.py mode=a+x
