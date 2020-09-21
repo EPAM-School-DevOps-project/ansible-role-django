@@ -27,14 +27,9 @@
       dest: /etc/systemd/system
       owner: root
       group: root
-    notify:
-      - Notejam service copied
 
   - name: Start notejam service
     service:
       name: notejam.service
-#       state: started
       enabled: yes
-    notify:
-      - Notejam service started & enabled
 
