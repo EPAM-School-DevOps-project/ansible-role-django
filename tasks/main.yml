@@ -11,15 +11,15 @@
   - name: Changing perm of "manage.py", adding "+x"
     file: dest={{ app_path }}manage.py mode=a+x
 
-  - name: Sync database
-    django_manage: 
-      app_path: "{{ app_path }}"
-      command: syncdb
+#   - name: Sync database
+#     django_manage: 
+#       app_path: "{{ app_path }}"
+#       command: syncdb
 
-  - name: Create superuser
-    django_manage:
-      command: "createsuperuser --noinput --username=Gago --email=hrach.hambaryan@gmail.com"
-      app_path: "{{ app_path }}"
+#   - name: Create superuser
+#     django_manage:
+#       command: "createsuperuser --noinput --username=Gago --email=hrach.hambaryan@gmail.com"
+#       app_path: "{{ app_path }}"
 
   - name: Copy systemd service file to server
     copy:
@@ -33,7 +33,7 @@
   - name: Start notejam service
     service:
       name: notejam.service
-      state: started
+#       state: started
       enabled: yes
     notify:
       - Notejam service started & enabled
