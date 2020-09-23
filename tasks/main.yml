@@ -5,7 +5,7 @@
     
   - name: Install Python Django dependencies
     pip:
-      requirements: "{{ app_path }}requirements.yml"
+      requirements: "{{ app_path }}requirements.txt"
 
   - name: Changing perm of "manage.py", adding "+x"
     file: dest="{{ app_path }}notejam/manage.py" mode=a+x
