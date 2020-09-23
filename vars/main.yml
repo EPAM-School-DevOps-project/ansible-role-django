@@ -2,4 +2,4 @@
 # vars file for webapp_db
 remote_app_path:  /opt/
 app_path: /opt/django/
-local_app_path: /var/lib/jenkins/workspace/packer-build/django/
+local_app_path: /var/lib/jenkins/workspace/packer build/django/
