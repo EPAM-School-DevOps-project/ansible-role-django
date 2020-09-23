@@ -2,7 +2,6 @@
     synchronize:
       src: "{{ local_app_path }}"
       dest: "{{ remote_app_path }}"
-      force: yes
     
   - name: Install Python Django dependencies
     pip:
