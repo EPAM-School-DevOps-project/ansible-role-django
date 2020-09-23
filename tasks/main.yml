@@ -5,10 +5,10 @@
     
   - name: Install Python Django dependencies
     pip:
-      requirements: /opt/django/requirements.txt
+      requirements: "{{ app_path }}requirements.yml"
 
   - name: Changing perm of "manage.py", adding "+x"
-    file: dest=/opt/django/notejam/manage.py mode=a+x
+    file: dest="{{ app_path }}notejam/manage.py" mode=a+x
 
 #   - name: Sync database
 #     django_manage: 
