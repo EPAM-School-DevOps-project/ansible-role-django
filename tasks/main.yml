@@ -23,7 +23,7 @@
 
   - name: Copy systemd service file to server
     copy:
-      src: /home/hrach-hambaryan/epam-devops-project/django/notejam.service
+      src: "{{ local_app_path }}/notejam.service"
       dest: /etc/systemd/system
       owner: root
       group: root
