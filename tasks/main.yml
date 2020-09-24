@@ -17,6 +17,19 @@
   - name: Changing perm of "manage.py", adding "+x"
     file: dest="{{ remote_app_path }}notejam/manage.py" mode=a+x
 
+  - name: modify settings.py to connect to db
+    replace:
+      path: '{{ remote_app_path }}notejam/notejam/settings.py'
+      regexp: '{{  item.editable  }}'
+      replace: '{{  item.edited  }}'
+    loop:
+      - { editable: '{{ engine }}', edited: '{{ engine_edited }}' }
+      - { editable: '{{ name }}', edited: '{{ name_edited }}' }
+      - { editable: '{{ user }}', edited: '{{ user_edited }}' }
+      - { editable: '{{ pwd }}', edited: '{{ pwd_edited }}' }
+      - { editable: '{{ host }}', edited: '{{ host_edited }}' }
+      - { editable: '{{ port }}', edited: '{{ port_edited }}' }
+
 #   - name: Sync database
 #     django_manage: 
 #       app_path: "{{ app_path }}"
