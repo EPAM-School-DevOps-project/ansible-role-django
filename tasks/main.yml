@@ -17,6 +17,8 @@
   - name: Changing perm of "manage.py", adding "+x"
     file: dest="{{ remote_app_path }}notejam/manage.py" mode=a+x
 
+  #TO DO ~ TEMPLATE
+    
   - name: modify settings.py to connect to db
     replace:
       path: '{{ remote_app_path }}notejam/notejam/settings.py'
@@ -30,18 +32,19 @@
       - { editable: '{{ host }}', edited: '{{ host_edited }}' }
       - { editable: '{{ port }}', edited: '{{ port_edited }}' }
 
-#   - name: Sync database
-#     django_manage: 
-#       app_path: "{{ app_path }}"
-#       command: syncdb
+  - name: Sync database
+    django_manage: 
+      app_path: "{{ app_path }}"
+      command: syncdb
 
-#   - name: Create superuser
-#     django_manage:
-#       command: "createsuperuser --noinput --username=Gago --email=hrach.hambaryan@gmail.com"
-#       app_path: "{{ app_path }}"
+  - name: Create superuser
+    django_manage:
+      command: "createsuperuser --noinput --username=Gago --email=hrach.hambaryan@gmail.com"
+      app_path: "{{ app_path }}"
 
-  - name: Start notejam service
+  - name: Enable notejam service
     service:
       name: notejam.service
       enabled: yes
+      state: started
 
