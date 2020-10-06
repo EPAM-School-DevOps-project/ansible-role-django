@@ -5,9 +5,10 @@
 remote_app_path:  /opt/django/
 local_app_path: "{{ playbook_dir }}/../django/"
 
-start_command: '/opt/django/notejam/manage.py runserver  0.0.0.0:8000
+start_command: '/opt/django/notejam/manage.py runserver  0.0.0.0:8000'
 
 # DB related vars
+
 db_engine: 'mysql'
 
 db_name: 'notejamdb'
