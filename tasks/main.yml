@@ -3,24 +3,19 @@
       src: "{{ local_app_path }}"
       dest: "{{ remote_app_path }}"
       
-  - name: Copy systemd service file to server
-    copy:
-      src: "{{ local_app_path }}/notejam.service"
-      dest: /etc/systemd/system
-      owner: root
-      group: root   
-   
   - name: Install Python Django dependencies
     pip:
       requirements: "{{ remote_app_path }}requirements.txt"
 
-  - name: Changing perm of "manage.py", adding "+x"
-    file: dest="{{ remote_app_path }}notejam/manage.py" mode=a+x
+  - name: Copy systemd service file to server
+    template:
+      src: "notejam.service.j2"
+      dest: /etc/systemd/system
 
   - name: Creating settings.py from template
     template:
-      src: settings.j2
-      dest: '{{ remote_app_path }}notejam/settings.py'
+      src: "settings.j2"
+      dest: "{{ remote_app_path }}notejam/settings.py"
 
   - name: Sync database
     django_manage: 

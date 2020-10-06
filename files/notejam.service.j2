@@ -1,0 +1,10 @@
+[Unit]
+Description=Unit for starting a basic Django app
+After=network.service 
+
+[Service]
+Restart=on-failure
+ExecStart={{ start_command }}
+
+[Install]
+WantedBy=multi-user.target
