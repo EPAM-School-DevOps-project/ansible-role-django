@@ -17,8 +17,6 @@
   - name: Changing perm of "manage.py", adding "+x"
     file: dest="{{ remote_app_path }}notejam/manage.py" mode=a+x
 
-  #TO DO ~ TEMPLATE
-    
   - name: Creating settings.py from template
     template:
       src: settings.j2
