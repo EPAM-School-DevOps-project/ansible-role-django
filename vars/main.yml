@@ -6,23 +6,17 @@ remote_app_path:  /opt/django/
 local_app_path: "{{ playbook_dir }}/../django/"
 
 # DB related vars
-engine: "'ENGINE': 'django.db.backends.temp'"
-engine_edited: "'ENGINE': 'django.db.backends.mysql'"
+db_engine: 'mysql'
 
-name: "'NAME': 'temp'"
-name_edited: "'NAME': 'notejamdb'"
+db_name: 'notejamdb'
 
-user: "'USER': 'temp'"
-user_edited: "'USER': '{{ user_vault }}'"
+db_user: '{{ user_vault }}'
 
-pwd: "'PASSWORD': 'temp'"
-pwd_edited: "'PASSWORD': '{{ password_vault }}'"
+db_password: '{{ password_vault }}'
 
-host: "'HOST': 'temp'"
-host_edited: "'HOST': '{{ rds_host }}'"
+db_host: '{{ rds_host }}'
 
-port: "'PORT': 'temp'"
-port_edited: "'PORT': '3306'"
+db_port: '3306'
 
 
 password_vault: !vault |
