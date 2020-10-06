@@ -22,10 +22,10 @@
       app_path: "{{ remote_app_path }}notejam/"
       command: syncdb
 
-  - name: Create superuser
-    django_manage:
-      command: "createsuperuser --noinput --username=Gago --email=hrach.hambaryan@gmail.com"
-      app_path: "{{ remote_app_path }}notejam/"
+  # - name: Create superuser
+  #   django_manage:
+  #     command: "createsuperuser --noinput --username=Gago --email=hrach.hambaryan@gmail.com"
+  #     app_path: "{{ remote_app_path }}notejam/"
 
   - name: Enable notejam service
     service:
