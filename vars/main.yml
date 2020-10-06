@@ -16,7 +16,7 @@ db_user: '{{ user_vault }}'
 
 db_password: '{{ password_vault }}'
 
-db_host: '{{ rds_host }}'
+db_host: '{{ RDS_HOST }}'
 
 db_port: '3306'
 
