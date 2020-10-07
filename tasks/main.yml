@@ -1,7 +1,15 @@
-  - name: Synchronize source code
-    synchronize:
-      src: "{{ local_app_path }}"
-      dest: "{{ remote_app_path }}"
+  - name: Install git
+    yum:
+      name: '{{ item }}'
+      state: installed
+      update_cache: yes
+    loop:
+      - git
+
+  - name: Git checkout
+    git:
+      repo: 'https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/komarserjio/notejam/tree/master/django'
+      dest: /opt/django
       
   - name: Install Python Django dependencies
     pip:
@@ -21,11 +29,6 @@
     django_manage: 
       app_path: "{{ remote_app_path }}notejam/"
       command: syncdb
-
-  # - name: Create superuser
-  #   django_manage:
-  #     command: "createsuperuser --noinput --username=Gago --email=hrach.hambaryan@gmail.com"
-  #     app_path: "{{ remote_app_path }}notejam/"
 
   - name: Enable notejam service
     service:
