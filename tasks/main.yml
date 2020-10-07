@@ -15,24 +15,24 @@
     pip:
       requirements: "{{ remote_app_path }}requirements.txt"
 
-  - name: Copy systemd service file to server
-    template:
-      src: "notejam.service.j2"
-      dest: /etc/systemd/system/notejam.service
+  # - name: Copy systemd service file to server
+  #   template:
+  #     src: "notejam.service.j2"
+  #     dest: /etc/systemd/system/notejam.service
 
-  - name: Creating settings.py from template
-    template:
-      src: "settings.j2"
-      dest: "{{ remote_app_path }}notejam/notejam/settings.py"
+  # - name: Creating settings.py from template
+  #   template:
+  #     src: "settings.j2"
+  #     dest: "{{ remote_app_path }}notejam/notejam/settings.py"
 
-  - name: Sync database
-    django_manage: 
-      app_path: "{{ remote_app_path }}notejam/"
-      command: syncdb
+  # - name: Sync database
+  #   django_manage: 
+  #     app_path: "{{ remote_app_path }}notejam/"
+  #     command: syncdb
 
-  - name: Enable notejam service
-    service:
-      name: notejam.service
-      enabled: yes
-      state: started
+  # - name: Enable notejam service
+  #   service:
+  #     name: notejam.service
+  #     enabled: yes
+  #     state: started
 
