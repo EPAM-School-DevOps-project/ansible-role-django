@@ -1,38 +1,30 @@
-  - name: Install git
-    yum:
-      name: '{{ item }}'
-      state: installed
-      update_cache: yes
-    loop:
-      - git
-
-  - name: Git checkout
-    git:
-      repo: 'https://{{ githubuser | urlencode }}:{{ githubpassword | urlencode }}@github.com/komarserjio/notejam/tree/master/django'
-      dest: /opt/django
+  - name: Synchronize source code
+    synchronize:
+      src: "{{ local_app_path }}"
+      dest: "{{ remote_app_path }}"
       
   - name: Install Python Django dependencies
     pip:
       requirements: "{{ remote_app_path }}requirements.txt"
 
-  # - name: Copy systemd service file to server
-  #   template:
-  #     src: "notejam.service.j2"
-  #     dest: /etc/systemd/system/notejam.service
+  - name: Copy systemd service file to server
+    template:
+      src: "notejam.service.j2"
+      dest: /etc/systemd/system/notejam.service
 
-  # - name: Creating settings.py from template
-  #   template:
-  #     src: "settings.j2"
-  #     dest: "{{ remote_app_path }}notejam/notejam/settings.py"
+  - name: Creating settings.py from template
+    template:
+      src: "settings.j2"
+      dest: "{{ remote_app_path }}notejam/notejam/settings.py"
 
-  # - name: Sync database
-  #   django_manage: 
-  #     app_path: "{{ remote_app_path }}notejam/"
-  #     command: syncdb
+  - name: Sync database
+    django_manage: 
+      app_path: "{{ remote_app_path }}notejam/"
+      command: syncdb
 
-  # - name: Enable notejam service
-  #   service:
-  #     name: notejam.service
-  #     enabled: yes
-  #     state: started
+  - name: Enable notejam service
+    service:
+      name: notejam.service
+      enabled: yes
+      state: started
 
